@@ -77,6 +77,7 @@ function gatherData(currentEl) {
         }
       }
 
+      // Is it a number? parse it as float, otherwise leave it.
       let data_text = title_dom.nextElementSibling.innerText;
       collected_data[key] = convertToNumber.includes(key)
         ? parseFloat(data_text)
