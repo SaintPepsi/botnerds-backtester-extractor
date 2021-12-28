@@ -8,10 +8,12 @@
 
 4. Change Username in script.
 
-5. Paste script into console (Make sure all backtest messages have loaded and are visible)
+5. Change Formatting ENUM [FORMAT_REGULAR, FORMAT_PER_TEST]
 
-6. Download JSON that gets returned.
+6. Paste script into console (Make sure all backtest messages have loaded and are visible)
 
-7. Paste JSON output into [JSON TO CSV](https://www.convertcsv.com/json-to-csv.htm)
+7. Download JSON that gets returned.
 
-8. Download CSV data and import into Google Sheets
+8. Paste JSON output into [JSON TO CSV](https://www.convertcsv.com/json-to-csv.htm)
+
+9. Download CSV data and import into Google Sheets

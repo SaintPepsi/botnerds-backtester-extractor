@@ -34,6 +34,11 @@ let convertToNumber = [
   "tradesClosed",
 ];
 
+let FORMAT_REGULAR = "FORMAT_REGULAR";
+let FORMAT_PER_TEST = "FORMAT_PER_TEST";
+
+let formatting_enum = FORMAT_PER_TEST;
+
 let userName = "SanCoca";
 let new_msg_divider = document.querySelector("#---new-messages-bar");
 
@@ -115,12 +120,54 @@ selectNextMessage(current_element);
 
 console.log("allCollectedData", allCollectedData);
 
-// Download final data as json file
-var dataStr =
-  "data:text/json;charset=utf-8," +
-  encodeURIComponent(JSON.stringify(allCollectedData));
-var dlAnchorElem = document.createElement("a");
+switch (formatting_enum) {
+  case FORMAT_REGULAR:
+    // Download final data as json file - Regular format
+    var dataStr =
+      "data:text/json;charset=utf-8," +
+      encodeURIComponent(JSON.stringify(allCollectedData));
+    var dlAnchorElem = document.createElement("a");
 
-dlAnchorElem.setAttribute("href", dataStr);
-dlAnchorElem.setAttribute("download", "data.json");
-dlAnchorElem.click();
+    dlAnchorElem.setAttribute("href", dataStr);
+    dlAnchorElem.setAttribute("download", "data.json");
+    dlAnchorElem.click();
+    break;
+
+  case FORMAT_PER_TEST:
+    // Format document per test
+    let final_object = {};
+
+    // Create Base Final Object
+    for (let i = 0; i < data_length; i++) {
+      let test_id = `test_${i + 1}`;
+      final_object[test_id] = [];
+    }
+
+    allCollectedData.forEach((data) => {
+      let [pair, test_index] = data.title
+        .split("Summary Results for ")[1]
+        .split(" Test ");
+      let test_id = `test_${test_index}`;
+      if (!final_object[test_id]) {
+        final_object[test_id] = [];
+      }
+
+      final_object[test_id].push(data);
+    });
+
+    console.log("quote_pair_data", final_object);
+
+    var dataStr =
+      "data:text/json;charset=utf-8," +
+      encodeURIComponent(JSON.stringify(final_object));
+    var dlAnchorElem = document.createElement("a");
+
+    dlAnchorElem.setAttribute("href", dataStr);
+    dlAnchorElem.setAttribute("download", "data.json");
+    dlAnchorElem.click();
+
+    break;
+
+  default:
+    break;
+}
