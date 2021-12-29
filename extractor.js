@@ -66,8 +66,13 @@ function gatherData(currentEl) {
   );
 
   // Data collection object
+  let [pair, test_index] = title.innerText
+    .split("Summary Results for ")[1]
+    .split(" Test ");
+
   let collected_data = {
-    title: title.innerText,
+    pair,
+    test_index,
   };
 
   for (const key in dataToGrab) {
@@ -144,10 +149,7 @@ switch (formatting_enum) {
     }
 
     allCollectedData.forEach((data) => {
-      let [pair, test_index] = data.title
-        .split("Summary Results for ")[1]
-        .split(" Test ");
-      let test_id = `test_${test_index}`;
+      let test_id = `test_${data.test_index}`;
       if (!final_object[test_id]) {
         final_object[test_id] = [];
       }
