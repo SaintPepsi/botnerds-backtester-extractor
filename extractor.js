@@ -142,12 +142,6 @@ switch (formatting_enum) {
     // Format document per test
     let final_object = {};
 
-    // Create Base Final Object
-    for (let i = 0; i < data_length; i++) {
-      let test_id = `test_${i + 1}`;
-      final_object[test_id] = [];
-    }
-
     allCollectedData.forEach((data) => {
       let test_id = `test_${data.test_index}`;
       if (!final_object[test_id]) {
