@@ -134,7 +134,7 @@ switch (formatting_enum) {
     var dlAnchorElem = document.createElement("a");
 
     dlAnchorElem.setAttribute("href", dataStr);
-    dlAnchorElem.setAttribute("download", "data.json");
+    dlAnchorElem.setAttribute("download", "data_regular.json");
     dlAnchorElem.click();
     break;
 
@@ -159,7 +159,7 @@ switch (formatting_enum) {
     var dlAnchorElem = document.createElement("a");
 
     dlAnchorElem.setAttribute("href", dataStr);
-    dlAnchorElem.setAttribute("download", "data.json");
+    dlAnchorElem.setAttribute("download", "data_per_test.json");
     dlAnchorElem.click();
 
     break;
