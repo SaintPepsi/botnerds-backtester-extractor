@@ -48,7 +48,7 @@ let allCollectedData = [];
 
 function gatherData(currentEl) {
   // Get the grid stats summary
-  let stats_summary = currentEl.querySelector(".grid-1nZz7S");
+  let stats_summary = currentEl.querySelector("[class*='grid']");
 
   // Get the title element of the summary (Contains pairs + iteration)
   let title = stats_summary.querySelectorAll(
